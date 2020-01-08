@@ -1,0 +1,8 @@
+public static List<String[]> getLines (String filePath, String separator, Charset charset){
+        List<String[]> lines = new ArrayList<>();
+        try {
+            lines= Files.readAllLines(Paths.get(filePath),charset).stream().skip(1).map(line -> line.split(separator)).collect(Collectors.toList());
+        } catch (IOException e) {
+        }
+        return lines;
+    }
