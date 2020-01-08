@@ -1,0 +1,74 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+
+
+public class App {
+	private Scanner input = new Scanner(System.in);
+	private int currentMenuSelection;
+
+	public void start() {
+		this.currentMenuSelection = mainMenu();
+
+		while (this.currentMenuSelection != 0) {
+			this.userSelectionEvent();
+			this.currentMenuSelection = mainMenu();
+		}
+
+		System.out.println("Programm Beendet");
+	}
+
+	private int mainMenu() {
+
+		int selection;
+		System.out.println("____________________________");
+	    System.out.println("|   MENU SELECTION DEMO    |");
+	    System.out.println("| Options:                 |");
+	    System.out.println("|        1. Option 1       |");
+	    System.out.println("|        2. Option 2       |");
+	    System.out.println("|        3. Option         |");
+	    System.out.println("|        4. Option         |");
+	    System.out.println("|        0. Exit           |");
+	    System.out.println("|__________________________|");
+
+		selection = this.getNextScannerInt();
+		return selection;
+	}
+
+	private int getNextScannerInt() {
+		int numberInput = 0;
+		try {
+			numberInput = this.input.nextInt();
+		} catch (InputMismatchException e) {
+			System.out.println("Bitte nur Zahlen eingeben!!");
+			this.input.next();
+			numberInput = getNextScannerInt();
+		}
+
+		return numberInput;
+	}
+
+	private void userSelectionEvent() {
+		switch (this.currentMenuSelection) {
+		case 1:
+		    System.out.println("case 1");
+			break;
+		case 2:
+			System.out.println("case 2");
+			break;
+		case 3:
+			System.out.println("case 3");
+			break;
+		case 4:
+			System.out.println("case 4");
+			break;
+		default:
+			break;
+		}
+	}
+	public static void main(String[] args) {
+		App app = new App();
+		app.start();
+	}
+
+}
